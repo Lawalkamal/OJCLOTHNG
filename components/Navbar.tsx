@@ -29,7 +29,7 @@ const Navbar: React.FC<NavbarProps> = ({ cartCount, onOpenCart }) => {
 
         {/* Center: Logo */}
         <Link to="/" className="text-2xl font-display tracking-tighter text-center mx-auto">
-          OJCLOTHING
+          OJCLOTHINGS
         </Link>
 
         {/* Right Side: Nav Links on Desktop, Cart on all */}
