@@ -8,7 +8,7 @@ export const PRODUCTS: Product[] = [
     category: 'Outerwear',
     price: 450,
     description: 'A masterpiece of minimalism. Handcrafted from premium mulberry silk with a modern oversized silhouette.',
-    images: ['https://picsum.photos/id/20/800/1200', 'https://picsum.photos/id/21/800/1200'],
+    images: ['/images/hero-banner-1.jpg', '/images/hero-banner-2.jpg'],
     colors: ['Champagne', 'Onyx'],
     sizes: ['S', 'M', 'L'],
     isFeatured: true
@@ -70,3 +70,14 @@ export const PRODUCTS: Product[] = [
 ];
 
 export const CATEGORIES = ['All', 'Outerwear', 'Knitwear', 'Bottoms', 'Accessories'];
+
+export const HERO_IMAGES = [
+  '/images/hero-banner-1.jpg',
+  '/images/hero-banner-2.jpg',
+  '/images/hero-banner-3.jpg',
+  '/images/hero-banner-4.jpg',
+  '/images/hero-banner-5.jpg',
+  '/images/hero-banner-6.jpg',
+  '/images/hero-banner-7.jpg',
+  '/images/hero-banner-8.jpg',
+];

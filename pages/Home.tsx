@@ -1,7 +1,7 @@
 
-import React, { useEffect, useRef } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { PRODUCTS } from '../constants';
+import { PRODUCTS, HERO_IMAGES } from '../constants';
 import ProductCard from '../components/ProductCard';
 
 declare const gsap: any;
@@ -11,6 +11,18 @@ const Home: React.FC = () => {
   const containerRef = useRef<HTMLDivElement>(null);
   const heroTextRef = useRef<HTMLHeadingElement>(null);
   const heroImageRef = useRef<HTMLDivElement>(null);
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  // Hero Image Slider
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImageIndex(prevIndex => 
+        prevIndex === HERO_IMAGES.length - 1 ? 0 : prevIndex + 1
+      );
+    }, 3000); // Change image every 5 seconds
+
+    return () => clearInterval(timer); // Cleanup on unmount
+  }, []);
 
   useEffect(() => {
     gsap.registerPlugin(ScrollTrigger);
@@ -78,17 +90,20 @@ const Home: React.FC = () => {
       {/* Hero Section */}
       <section className="relative h-screen flex items-center justify-center overflow-hidden">
         <div ref={heroImageRef} className="absolute inset-0 z-0 scale-110">
-          <img 
-            src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?auto=format&fit=crop&q=80&w=2000" 
-            alt="Fashion Hero" 
-            className="w-full h-full object-cover"
-          />
+          {HERO_IMAGES.map((src, index) => (
+            <img 
+              key={src}
+              src={src} 
+              alt={`Fashion Hero ${index + 1}`}
+              className={`md:h-[230vh] absolute inset-0 w-full h-full object-cover transition-opacity duration-1000 ease-in-out ${index === currentImageIndex ? 'opacity-100' : 'opacity-0'} `}
+            />
+          ))}
           <div className="absolute inset-0 bg-black/15" />
         </div>
         
         <div className="relative z-10 text-center text-white px-4">
           <h1 ref={heroTextRef} className="text-7xl md:text-[12rem] font-display leading-[0.8] tracking-tighter opacity-0">
-            MINIMAL<br />ESSENTIALS
+            OJ<br />CLOTHINGS
           </h1>
           <div className="mt-12 flex justify-center space-x-12">
             <Link to="/shop" className="text-[10px] uppercase tracking-[0.4em] font-bold border-b border-white/50 pb-2 hover:border-white transition-all duration-500">Explore Shop</Link>

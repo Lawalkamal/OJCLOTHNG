@@ -1,0 +1,1 @@
+This file is a placeholder to create the 'public/images' directory. Please add your hero image (e.g., 'hero-banner.jpg') to this folder.
